@@ -17,7 +17,7 @@ export const authOptions: AuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
         }),
-        CredentialsProvider({
+        CredentialsProvider({ //User validations at login
             name: 'credentials',
             credentials: {
                 email: { label: 'email', type: 'text' },

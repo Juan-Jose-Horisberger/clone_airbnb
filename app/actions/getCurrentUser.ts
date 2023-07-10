@@ -25,7 +25,12 @@ export default async function getCurrentUser() { //comunication with the db
             return null
         }
 
-        return currentUser
+        return { //we fix warnings, and we modify the data with the function .toISOString()
+            ...currentUser,
+            createdAt: currentUser.createdAt.toISOString(),
+            updatedAt: currentUser.updatedAt.toISOString(),
+            emailVerified: currentUser.emailVerified?.toISOString() || null
+        }
 
     } catch (error: any) {
         return null

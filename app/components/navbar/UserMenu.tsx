@@ -16,9 +16,15 @@ const UserMenu: React.FC<Props> = ({ currentUser }) => {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [onClickLogout, setOnClickLogout] = useState<boolean>(false);
 
     const toggleOpen = useCallback((): void => {
         setIsOpen((value) => !value)
+    }, [])
+
+    const handleOnClick = useCallback((): void => {
+        setOnClickLogout(true)
+        signOut()
     }, [])
 
     return (
@@ -64,8 +70,9 @@ const UserMenu: React.FC<Props> = ({ currentUser }) => {
                                 />
                                 <hr />
                                 <MenuItem
-                                    onClick={() => signOut()}
+                                    onClick={handleOnClick}
                                     label='Logout'
+                                    onClickLogout={onClickLogout}
                                 />
                             </>
                         ) : (

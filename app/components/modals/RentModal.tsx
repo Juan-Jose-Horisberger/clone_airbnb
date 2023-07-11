@@ -8,6 +8,7 @@ import { categories } from '@/app/constantes'
 import { type Category as CategoryType } from "@/app/types"
 // import CategoryInput from '../inputs/CategoryInput'
 
+
 enum STEPS {
     CATEGORY = 0,
     LOCATION = 1,

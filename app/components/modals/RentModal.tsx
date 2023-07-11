@@ -6,8 +6,7 @@ import useRentModal from '@/app/hooks/useRentModal'
 import Heading from '../Heading'
 import { categories } from '@/app/constantes'
 import { type Category as CategoryType } from "@/app/types"
-// import CategoryInput from '../inputs/CategoryInput'
-
+import CategoryInput from '../inputs/CategoryInput'
 
 enum STEPS {
     CATEGORY = 0,
@@ -48,12 +47,12 @@ const RentModal = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto'>
                 {categories.map((item: CategoryType) => (
                     <div key={item.label} className='col-span-1'>
-                        {/* <CategoryInput
+                        <CategoryInput
                             onClick={() => { }}
                             seleted={false}
                             label={item.label}
                             icon={item.icon}
-                        /> */}
+                        />
                     </div>
                 ))}
             </div>

@@ -3,8 +3,11 @@ import { useCallback, useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import Avatar from '../Avatar'
 import MenuItem from './MenuItem'
+
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import useLoginModal from '@/app/hooks/useLoginModal'
+import useRentModal from '@/app/hooks/useRentModal'
+
 import { signOut } from 'next-auth/react'
 import { SafeUser } from '@/app/types'
 
@@ -13,10 +16,12 @@ interface Props {
 }
 
 const UserMenu: React.FC<Props> = ({ currentUser }) => {
-    const registerModal = useRegisterModal();
-    const loginModal = useLoginModal();
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [onClickLogout, setOnClickLogout] = useState<boolean>(false);
+    const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
+    const rentModal = useRentModal()
+
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [onClickLogout, setOnClickLogout] = useState<boolean>(false)
 
     const toggleOpen = useCallback((): void => {
         setIsOpen((value) => !value)

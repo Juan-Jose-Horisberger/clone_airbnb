@@ -5,8 +5,10 @@ import { Nunito } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
 import ClientOnly from './components/ClientOnly'
 import RegisterModal from './components/modals/RegisterModal'
-import ToasterProvider from './providers/ToasterProvider'
 import LoginModal from './components/modals/LoginModal'
+import RentModal from './components/modals/RentModal'
+
+import ToasterProvider from './providers/ToasterProvider'
 import getCurrentUser from './actions/getCurrentUser'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,6 +35,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <LoginModal />
           <RegisterModal />
+          <RentModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
         {children}

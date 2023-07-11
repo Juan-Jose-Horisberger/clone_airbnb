@@ -1,11 +1,13 @@
 'use client'
 
 import Container from "../Container"
+import { FaSkiing } from "react-icons/fa"
 import { TbBeach } from "react-icons/tb"
 import { GiWindmill } from "react-icons/gi"
 import { MdOutlineVilla } from "react-icons/md"
 
-import CategoryBox from "./CategoryBox"
+import CategoryBox from "../CategoryBox"
+import { usePathname, useSearchParams } from "next/navigation"
 
 type Props = {}
 
@@ -25,9 +27,17 @@ export const categories = [
         icon: MdOutlineVilla,
         description: 'This property is modern!'
     },
+
+
 ]
 
 const Categories = (props: Props) => {
+    const params = useSearchParams()
+    const category = params?.get('category')
+    const pathname = usePathname()
+    const isMainPage = pathname === '/' //This url with category will only be seen in '/'
+    if (!isMainPage) return null
+
     return (
         <Container>
             <div className="pt-4 flex flex-row items-center justify-between overflow-auto">
@@ -35,7 +45,7 @@ const Categories = (props: Props) => {
                     <CategoryBox
                         key={item.label}
                         label={item.label}
-                        description={item.description}
+                        selected={category === item.label}
                         icon={item.icon}
                     />
                 ))}

@@ -8,7 +8,6 @@ import qs from "query-string"
 interface Props {
     icon: IconType
     label: string
-    // description: string
     selected?: boolean
 }
 

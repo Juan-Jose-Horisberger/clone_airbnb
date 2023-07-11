@@ -21,7 +21,7 @@ export const categories = [
         description: 'This property has windmills!'
     },
     {
-        label: 'Beach',
+        label: 'Modern',
         icon: MdOutlineVilla,
         description: 'This property is modern!'
     },

@@ -6,8 +6,11 @@ import { useRouter } from "next/router"
 type Props = {}
 
 const Logo = (props: Props) => {
+    const router = useRouter()
+
     return (
         <Image
+            onClick={() => router.push('/')}
             alt="Logo"
             className="hidden md:block cursor-pointer"
             width="100"

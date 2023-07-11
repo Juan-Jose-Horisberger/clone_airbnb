@@ -2,6 +2,9 @@
 
 import Container from "../Container"
 import { TbBeach } from "react-icons/tb"
+import { GiWindmill } from "react-icons/gi"
+import { MdOutlineVilla } from "react-icons/md"
+
 import CategoryBox from "./CategoryBox"
 
 type Props = {}
@@ -13,14 +16,14 @@ export const categories = [
         description: 'This property is close to the beach!'
     },
     {
-        label: 'Beach',
-        icon: TbBeach,
-        description: 'This property is close to the beach!'
+        label: 'Windmills',
+        icon: GiWindmill,
+        description: 'This property has windmills!'
     },
     {
         label: 'Beach',
-        icon: TbBeach,
-        description: 'This property is close to the beach!'
+        icon: MdOutlineVilla,
+        description: 'This property is modern!'
     },
 ]
 

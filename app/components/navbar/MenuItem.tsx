@@ -16,9 +16,9 @@ const MenuItem: React.FC<Props> = ({ onClick, label, onClickLogout }) => {
             disabled={(label === 'Logout' && onClickLogout) && disabled}
             onClick={onClick}
             className={`
-                px-4 py-3 hover:bg-neutral-100 transition font-semibold text-start  
+                px-4 hover:bg-neutral-100 transition font-semibold text-start
+                ${(onClickLogout && label === 'Logout') ? 'py-0' : 'py-3'}
                 ${onClickLogout ? 'bg-neutral-100' : ''}
-                ${(onClickLogout && label === 'Logout') && 'py-0'}
             `}>
 
             {onClickLogout ? (

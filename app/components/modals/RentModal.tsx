@@ -51,6 +51,7 @@ const RentModal = () => {
     const category = watch('category')
     const location = watch('location')
 
+    //the technology we use in the component map is not compatible with react, so we must import the component in a different way
     const Map = useMemo(() => dynamic(() => import('../Map'), {
         ssr: false
     }), [location])

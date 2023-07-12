@@ -39,9 +39,22 @@ const RentModal = () => {
             guestCount: 1,
             roomCount: 1,
             bathroomCount: 1,
-            imageSrc: ''
+            imageSrc: '',
+            price: 1,
+            title: '',
+            description: '',
         }
     })
+
+    const category = watch('category')
+
+    const setCustomValue = (id: string, value: any) => {
+        setValue(id, value, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+        })
+    }
 
     const onBack = (): void => {
         setStep((value) => value - 1)
@@ -69,8 +82,8 @@ const RentModal = () => {
                 {categories.map((item: CategoryType) => (
                     <div key={item.label} className='col-span-1'>
                         <CategoryInput
-                            onClick={() => { }}
-                            seleted={false}
+                            onClick={(category) => setCustomValue('category', category)}
+                            seleted={category === item.label}
                             label={item.label}
                             icon={item.icon}
                         />
@@ -80,11 +93,22 @@ const RentModal = () => {
         </div>
     )
 
+    if (step === STEPS.LOCATION) {
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                    title='Where is your place located?'
+                    subtitle='Help guests find you!'
+                />
+            </div>
+        )
+    }
+
     return (
         <Modal
             isOpen={rentModal.isOpen}
             onClose={rentModal.onClose}
-            onSubmit={rentModal.onClose}
+            onSubmit={onNext}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}

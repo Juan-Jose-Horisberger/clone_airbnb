@@ -1,8 +1,25 @@
-import React from 'react'
+'use client'
 
-type Props = {}
+import Select from 'react-select'
 
-const CountrySelect = (props: Props) => {
+export type CountrySelectValue = {
+    flag: string
+    label: string
+    latlng: number[]
+    region: string
+    value: string
+}
+
+interface Props {
+    value?: CountrySelectValue
+    onChange: (value: CountrySelectValue) => void
+}
+
+const CountrySelect: React.FC<Props> = ({
+    value,
+    onChange
+}) => {
+
     return (
         <div>CountrySelect</div>
     )

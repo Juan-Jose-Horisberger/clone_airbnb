@@ -10,6 +10,7 @@ import CategoryInput from '../inputs/CategoryInput'
 import { FieldValues, useForm } from 'react-hook-form'
 import CountrySelect from '../inputs/CountrySelect'
 import dynamic from 'next/dynamic' //module importer dynamically
+import Counter from '../inputs/Counter'
 
 enum STEPS {
     CATEGORY = 0,
@@ -116,6 +117,18 @@ const RentModal = () => {
                 <Map
                     center={location?.latlng}
                 />
+            </div>
+        )
+    }
+
+    if (step === STEPS.LOCATION) {
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                    title='Share some basics about your place?'
+                    subtitle='What amenities do you have!'
+                />
+                <Counter />
             </div>
         )
     }

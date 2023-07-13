@@ -7,12 +7,15 @@ import Heading from '../Heading'
 import { categories } from '@/app/constantes'
 import { type Category as CategoryType } from "@/app/types"
 import CategoryInput from '../inputs/CategoryInput'
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, SubmitErrorHandler, useForm } from 'react-hook-form'
 import CountrySelect from '../inputs/CountrySelect'
 import dynamic from 'next/dynamic' //module importer dynamically
 import Counter from '../inputs/Counter'
 import ImageUpload from '../inputs/ImageUpload'
 import Input from '../inputs/Input'
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
 enum STEPS {
     CATEGORY = 0,
@@ -24,6 +27,7 @@ enum STEPS {
 }
 
 const RentModal = () => {
+    const router = useRouter()
     const rentModal = useRentModal()
 
     const [step, setStep] = useState<STEPS>(STEPS.CATEGORY)
@@ -80,6 +84,22 @@ const RentModal = () => {
 
     const onNext = (): void => {
         setStep((value) => value + 1)
+    }
+
+    const onSubmit: SubmitErrorHandler<FieldValues> = (data) => {
+        if (step !== STEPS.PRICE) {
+            return onNext()
+        }
+
+        setIsLoading(true)
+        axios.post('/api/listings', data)
+            .then(() => {
+                toast.success('Listing Created!')
+                router.refresh()
+                reset()
+                setStep(STEPS.CATEGORY)
+                rentModal.onClose()
+            })
     }
 
     const actionLabel = useMemo((): string => {
@@ -210,7 +230,16 @@ const RentModal = () => {
                     title='Now, set your price'
                     subtitle='How much do you charge per night?'
                 />
-                <Input />
+                <Input
+                    id="price"
+                    label="Price"
+                    formatPrice
+                    type="number"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
             </div>
         )
     }

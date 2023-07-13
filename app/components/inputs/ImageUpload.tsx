@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import { CldUploadWidget } from "next-cloudinary"
 
 type Props = {}
 

@@ -100,6 +100,11 @@ const RentModal = () => {
                 setStep(STEPS.CATEGORY)
                 rentModal.onClose()
             })
+            .catch(() => {
+                toast.error('Something went wrong.')
+            }).finally(() => {
+                setIsLoading(false)
+            })
     }
 
     const actionLabel = useMemo((): string => {

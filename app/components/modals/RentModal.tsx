@@ -11,6 +11,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import CountrySelect from '../inputs/CountrySelect'
 import dynamic from 'next/dynamic' //module importer dynamically
 import Counter from '../inputs/Counter'
+import ImageUpload from '../inputs/ImageUpload'
 
 enum STEPS {
     CATEGORY = 0,
@@ -164,6 +165,7 @@ const RentModal = () => {
                     title='Add a phote of your place?'
                     subtitle='Show guests what your place looks like!'
                 />
+                <ImageUpload />
             </div>
         )
     }

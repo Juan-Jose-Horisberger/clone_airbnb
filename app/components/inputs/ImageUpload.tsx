@@ -1,6 +1,7 @@
 'use client'
 
 import { CldUploadWidget } from "next-cloudinary"
+import Image from "next/image"
 import { useCallback } from "react"
 import { TbPhotoPlus } from "react-icons/tb"
 
@@ -13,19 +14,21 @@ interface Props {
     value: string
 }
 
+const uploadPreset = "xnfuskcm";
+
 const ImageUpload: React.FC<Props> = ({
     onChange,
     value
 }) => {
 
     const handleUpload = useCallback((result: any): void => {
-        onChange(result)
+        onChange(result.info.secure_url)
     }, [onChange])
 
     return (
         <CldUploadWidget
             onUpload={handleUpload}
-            uploadPreset=""
+            uploadPreset={uploadPreset}
             options={{
                 maxFiles: 1
             }}
@@ -54,6 +57,18 @@ const ImageUpload: React.FC<Props> = ({
                         <div className="font-semibold text-lg">
                             Click to upload
                         </div>
+                        {value && (
+                            <div
+                                className="absolute inset-0 w-full h-full"
+                            >
+                                <Image
+                                    alt="Upload"
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                    src={value}
+                                />
+                            </div>
+                        )}
                     </div>
                 )
             }}

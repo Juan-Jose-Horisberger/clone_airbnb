@@ -56,6 +56,8 @@ const RentModal = () => {
     const guestCount = watch('guestCount')
     const roomCount = watch('roomCount')
     const bathroomCount = watch('bathroomCount')
+    const imageSrc = watch('imageSrc')
+
 
 
     //the technology we use in the component map is not compatible with react, so we must import the component in a different way
@@ -165,7 +167,10 @@ const RentModal = () => {
                     title='Add a phote of your place?'
                     subtitle='Show guests what your place looks like!'
                 />
-                <ImageUpload />
+                <ImageUpload
+                    value={imageSrc}
+                    onChange={(value) => setCustomValue('imageSrc', value)}
+                />
             </div>
         )
     }

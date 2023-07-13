@@ -26,7 +26,8 @@ enum STEPS {
 const RentModal = () => {
     const rentModal = useRentModal()
 
-    const [step, setStep] = useState(STEPS.CATEGORY)
+    const [step, setStep] = useState<STEPS>(STEPS.CATEGORY)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const {
         register,
@@ -58,8 +59,6 @@ const RentModal = () => {
     const roomCount = watch('roomCount')
     const bathroomCount = watch('bathroomCount')
     const imageSrc = watch('imageSrc')
-
-
 
     //the technology we use in the component map is not compatible with react, so we must import the component in a different way
     const Map = useMemo(() => dynamic(() => import('../Map'), {
@@ -183,7 +182,23 @@ const RentModal = () => {
                     title='How would you describe your place?'
                     subtitle='Short and sweet works best!'
                 />
-                {/* <Input /> */}
+                <Input
+                    id='title'
+                    label='Title'
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <Input
+                    id='description'
+                    label='Description'
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
             </div>
         )
     }

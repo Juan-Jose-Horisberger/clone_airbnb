@@ -52,6 +52,8 @@ const RentModal = () => {
     const category = watch('category')
     const location = watch('location')
 
+    const guestCount = watch('guestCount')
+
     //the technology we use in the component map is not compatible with react, so we must import the component in a different way
     const Map = useMemo(() => dynamic(() => import('../Map'), {
         ssr: false
@@ -128,7 +130,11 @@ const RentModal = () => {
                     title='Share some basics about your place?'
                     subtitle='What amenities do you have!'
                 />
-                <Counter title='Number of guests' subtitle='How many guests' />
+                <Counter
+                    title='Guests'
+                    subtitle='How many guests do you allow?'
+                    value={guestCount}
+                />
             </div>
         )
     }

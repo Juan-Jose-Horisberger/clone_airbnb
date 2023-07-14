@@ -7,6 +7,7 @@ import { type SafeUser } from '@/app/types'
 import { useCallback, useMemo } from 'react'
 import { format } from "date-fns"
 import Image from 'next/image'
+import HeartButton from '../HeartButton'
 
 interface Props {
     data: Listing
@@ -76,6 +77,12 @@ const ListingCard: React.FC<Props> = ({
                             transition
                         '
                     />
+                    <div className='absolute top-3 right-3'>
+                        <HeartButton
+                            listingId={data.id}
+                            currentUser={currentUser}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

@@ -5,8 +5,8 @@ import Heading from "./Heading"
 import Button from "./Button"
 
 interface Props {
-    title: string
-    subtitle: string
+    title?: string
+    subtitle?: string
     showReset?: boolean
 }
 

@@ -1,4 +1,4 @@
-import Container from "./components/Container";
+import Container from "@/app/components/Container";
 import ClientOnly from "./components/ClientOnly";
 import EmptyState from "./components/EmptyState";
 import getListings from "./actions/getListings";
@@ -22,6 +22,7 @@ export default async function Home() {
          <Container>
             <div className="
                pt-24
+               grid
                grid-cols-1
                sm:grid-cols-2
                md:grid-cols-3

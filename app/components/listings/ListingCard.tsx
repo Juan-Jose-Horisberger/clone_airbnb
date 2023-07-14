@@ -6,6 +6,7 @@ import useCountries from '@/app/hooks/useCountries'
 import { type SafeUser } from '@/app/types'
 import { useCallback, useMemo } from 'react'
 import { format } from "date-fns"
+import Image from 'next/image'
 
 interface Props {
     data: Listing
@@ -57,7 +58,27 @@ const ListingCard: React.FC<Props> = ({
     }, [reservation])
 
     return (
-        <div>ListingCard</div>
+        <div
+            onClick={() => router.push(`/listings/${data.id}`)}
+            className='col-span-1 cursor-pointer group'
+        >
+            <div className='flex flex-col gap-2 w-full'>
+                <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
+                    <Image
+                        fill
+                        alt="Listing"
+                        src={data.imageSrc}
+                        className='
+                            object-cover 
+                            h-full 
+                            w-full 
+                            group-hover:scale-110 
+                            transition
+                        '
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 

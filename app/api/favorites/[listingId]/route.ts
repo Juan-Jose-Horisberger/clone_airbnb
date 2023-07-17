@@ -7,7 +7,7 @@ interface IParams {
     listingId?: string
 }
 
-export default async function POST( //Add favorite
+export async function POST( //Add favorite
     request: Request,
     { params }: { params: IParams }
 ) {

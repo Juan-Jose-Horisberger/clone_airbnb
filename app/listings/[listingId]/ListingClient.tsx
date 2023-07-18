@@ -45,7 +45,7 @@ const ListingClient: React.FC<Props> = ({
                         mt-6
                     '>
                         <ListingInfo
-                            user={currentUser}
+                            user={listing.user}
                             category={category}
                             description={listing.description}
                             roomCount={listing.roomCount}

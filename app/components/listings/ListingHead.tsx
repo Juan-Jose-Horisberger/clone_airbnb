@@ -1,6 +1,10 @@
 'use client'
 
+import useCountries from "@/app/hooks/useCountries"
 import { type SafeUser } from "@/app/types"
+import Heading from "../Heading"
+import Image from "next/image"
+import HeartButton from "../HeartButton"
 
 interface Props {
     title: string
@@ -17,8 +21,31 @@ const ListingHead: React.FC<Props> = ({
     id,
     currentUser
 }) => {
+    const { getByValue } = useCountries()
+    const location = getByValue(locationValue)
+
     return (
-        <div>ListingHead</div>
+        <>
+            <Heading
+                title={title}
+                subtitle={`${location?.region}, ${location?.label}`}
+            />
+            <div className="
+                w-full
+                h-[60vh]
+                overflow-hidden
+                rounded-xl
+                relative
+            ">
+                <Image alt="Image" src={imageSrc} className="object-cover w-full" fill />
+                <div className="absolute top-5 right-5">
+                    <HeartButton
+                        listingId={id}
+                        currentUser={currentUser}
+                    />
+                </div>
+            </div>
+        </>
     )
 }
 

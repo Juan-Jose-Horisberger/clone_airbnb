@@ -1,3 +1,5 @@
+'use client'
+
 import useCountries from '@/app/hooks/useCountries'
 import { type Category, type SafeUser } from '@/app/types'
 import React from 'react'
@@ -39,7 +41,8 @@ const ListingInfo: React.FC<Props> = ({
                 '>
                     <div>Hosted by {user?.name}</div>
                     <Avatar src={user.image} />
-                    <div className='
+                </div>
+                <div className='
                         flex
                         flex-row
                         items-center
@@ -47,15 +50,14 @@ const ListingInfo: React.FC<Props> = ({
                         font-light
                         text-neutral-500
                     '>
-                        <div>
-                            {guestCount} guests
-                        </div>
-                        <div>
-                            {roomCount} rooms
-                        </div>
-                        <div>
-                            {bathroomCount} bathrooms
-                        </div>
+                    <div>
+                        {guestCount} guests
+                    </div>
+                    <div>
+                        {roomCount} rooms
+                    </div>
+                    <div>
+                        {bathroomCount} bathrooms
                     </div>
                 </div>
             </div>
@@ -67,6 +69,7 @@ const ListingInfo: React.FC<Props> = ({
                     description={category.description}
                 />
             )}
+            <hr />
         </div>
     )
 }

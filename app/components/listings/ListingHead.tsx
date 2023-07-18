@@ -1,8 +1,22 @@
-import React from 'react'
+'use client'
 
-type Props = {}
+import { type SafeUser } from "@/app/types"
 
-const ListingHead = (props: Props) => {
+interface Props {
+    title: string
+    locationValue: string
+    imageSrc: string
+    id: string
+    currentUser?: SafeUser | null
+}
+
+const ListingHead: React.FC<Props> = ({
+    title,
+    locationValue,
+    imageSrc,
+    id,
+    currentUser
+}) => {
     return (
         <div>ListingHead</div>
     )

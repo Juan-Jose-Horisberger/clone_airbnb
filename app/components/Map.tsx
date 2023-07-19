@@ -10,6 +10,7 @@ import markerIcon from "leaflet/dist/images/marker-icon.png"
 import markerShadow from "leaflet/dist/images/marker-shadow.png"
 
 //leaflet package is no exactly supported in react it's an open source project. we need to write the following:
+
 // @ts-ignore
 delete L.Icon.Default.prototype._getIconUrl
 

@@ -1,5 +1,7 @@
 'use client'
 
+import { Range } from 'react-date-range'
+
 interface Props {
     price: number
     dateRange: Range

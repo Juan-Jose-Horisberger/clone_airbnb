@@ -5,6 +5,11 @@ import { type Category, type SafeUser } from '@/app/types'
 import React from 'react'
 import Avatar from '../Avatar'
 import ListingCategory from './ListingCategory'
+import dynamic from 'next/dynamic'
+
+const Map = dynamic(() => import('../Map'), {
+    ssr: false //option to disable server rendering
+})
 
 interface Props {
     user: SafeUser
@@ -70,6 +75,11 @@ const ListingInfo: React.FC<Props> = ({
                 />
             )}
             <hr />
+            <div className='text-lg font-light text-neutral-500'>
+                {description}
+            </div>
+            <hr />
+            <Map center={coordinates} />
         </div>
     )
 }

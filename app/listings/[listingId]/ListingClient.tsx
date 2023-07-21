@@ -6,7 +6,7 @@ import ListingHead from '@/app/components/listings/ListingHead';
 import ListingInfo from '@/app/components/listings/ListingInfo';
 import { categories } from '@/app/constantes';
 import useLoginModal from '@/app/hooks/useLoginModal';
-import { type SafeUser, type SafeListing, Category } from '@/app/types'
+import { type SafeUser, type SafeListing, type safeReservations } from '@/app/types'
 import { Reservation } from '@prisma/client'
 import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
@@ -22,7 +22,7 @@ const initialDateRange = {
 }
 
 interface Props {
-    reservations?: Reservation[]
+    reservations?: safeReservations[]
     listing: SafeListing & {
         user: SafeUser;
     };
@@ -37,7 +37,7 @@ const ListingClient: React.FC<Props> = ({
     const loginModal = useLoginModal()
     const router = useRouter()
 
-    const disabledDates = useMemo(() => {
+    const disabledDates = useMemo(() => { //Every time you change reservations, the function is executed
         let dates: Date[] = []
 
         reservations.forEach((reservation) => {

@@ -29,6 +29,7 @@ const TripsClient: React.FC<Props> = ({
         axios.delete(`/api/reservations/${id}`)
             .then(() => {
                 toast.success('Reservation cancelled')
+                router.refresh()
             })
             .catch((error) => {
                 toast.error(error?.response?.data?.error)
@@ -36,7 +37,7 @@ const TripsClient: React.FC<Props> = ({
             .finally(() => {
                 setDeletingId('')
             })
-    }, [])
+    }, [router])
 
     return (
         <Container>
@@ -55,7 +56,7 @@ const TripsClient: React.FC<Props> = ({
                 2x1:grid-cols-6
                 gap-8
             ">
-                {reservations.map((reservation) => (
+                {reservations.map((reservation: SafeReservations) => (
                     <ListingCard
                         key={reservation.id}
                         data={reservation.listing}

@@ -40,7 +40,10 @@ const TripsClient: React.FC<Props> = ({
 
     return (
         <Container>
-            <Heading title="Trips" subtitle="Where yoy've been and where you're going" />
+            <Heading
+                title="Trips"
+                subtitle="Where yoy've been and where you're going"
+            />
             <div className="
                 mt-10
                 grid

@@ -7,8 +7,7 @@ import ListingInfo from '@/app/components/listings/ListingInfo';
 import { categories } from '@/app/constantes';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { type SafeUser, type SafeListing, type safeReservations } from '@/app/types'
-import { Reservation } from '@prisma/client'
-import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from 'date-fns';
+import { differenceInDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-hot-toast';

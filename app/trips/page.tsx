@@ -4,6 +4,7 @@ import ClientOnly from "../components/ClientOnly"
 
 import getCurrentUser from "../actions/getCurrentUser"
 import getReservations from "../actions/getReservations"
+import TripsClient from "./TripsClient"
 
 type Props = {}
 
@@ -24,8 +25,24 @@ const TripsPage = async (props: Props) => {
         userId: currentUser.id
     })
 
+    if (reservations.length === 0) {
+        return (
+            <ClientOnly>
+                <EmptyState
+                    title="No trips found"
+                    subtitle="Looks like you havent reserved any trips"
+                />
+            </ClientOnly>
+        )
+    }
+
     return (
-        <div>TripsPage</div>
+        <ClientOnly>
+            <TripsClient
+                reservations={reservations}
+                currentUser={currentUser}
+            />
+        </ClientOnly>
     )
 }
 

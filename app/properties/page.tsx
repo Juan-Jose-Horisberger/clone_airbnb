@@ -4,8 +4,9 @@ import ClientOnly from "../components/ClientOnly"
 
 import getCurrentUser from "../actions/getCurrentUser"
 import getReservations from "../actions/getReservations"
-import TripsClient from "./TripsClient"
+import TripsClient from "./PropertiesClient"
 import getListings from "../actions/getListings"
+import PropertiesClient from "./PropertiesClient"
 
 type Props = {}
 
@@ -39,8 +40,8 @@ const PropertiesPage = async (props: Props) => {
 
     return (
         <ClientOnly>
-            <TripsClient
-                reservations={reservations}
+            <PropertiesClient
+                listings={listings}
                 currentUser={currentUser}
             />
         </ClientOnly>

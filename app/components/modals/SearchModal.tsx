@@ -87,7 +87,7 @@ const SearchModal = (props: Props) => {
         setStep(STEPS.LOCATION)
         searchModal.onClose()
 
-        router.push(url)
+        router.push(url) //We change the navigation url.
     }, [
         step,
         searchModal,

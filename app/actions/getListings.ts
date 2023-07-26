@@ -38,7 +38,7 @@ export default async function getListings(
 
         if (roomCount) {
             query.roomCount = {
-                gte: +roomCount
+                gte: +roomCount //arrives from the url as a string, we change the typo to number
             }
         }
 

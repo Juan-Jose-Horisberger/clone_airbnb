@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Container from "@/app/components/Container";
 import ClientOnly from "./components/ClientOnly";
 import EmptyState from "./components/EmptyState";

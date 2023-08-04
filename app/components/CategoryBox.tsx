@@ -38,7 +38,6 @@ const CategoryBox: React.FC<Props> = ({
         const url = qs.stringifyUrl({ //we generate url string with the most recent query
             url: '/',
             query: updatedQuery,
-
         }, { skipNull: true }) //we filter all the empty options in this line
 
         router.push(url)
